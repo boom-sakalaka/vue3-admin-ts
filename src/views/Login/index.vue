@@ -2,7 +2,7 @@
  * @Author: GZH
  * @Date: 2021-12-29 11:37:17
  * @LastEditors: GZH
- * @LastEditTime: 2021-12-29 12:22:52
+ * @LastEditTime: 2021-12-29 14:46:53
  * @FilePath: \qrcode-proj\src\views\Login\index.vue
  * @Description: 登录页
 -->
@@ -53,6 +53,7 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
+import { useStore } from 'vuex'
 import { validatePassword, validateUsername, callBcak } from './rules'
 
 // 类型定义
@@ -106,7 +107,25 @@ const onChangePwdType = (): void => {
 
 // 处理登录逻辑
 const loading = ref<boolean>(false)
-const handlerLogin = (): void => {}
+const store = useStore()
+const loginFormRef = ref<any>(null)
+const handlerLogin = (): void => {
+  // 进行表单校验
+  loginFormRef.value?.vaildate((valid: boolean) => {
+    if (!valid) return
+    loading.value = true
+    store
+      .dispatch('user/login', loginForm.value)
+      .then(() => {
+        loading.value = false
+        // 3.进行登录后的处理
+      })
+      .catch((err) => {
+        console.log(err)
+        loading.value = false
+      })
+  })
+}
 </script>
 <style scoped lang="scss">
 $bg: #2d3a4b;

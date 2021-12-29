@@ -1,0 +1,23 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
+/*
+ * @Author: GZH
+ * @Date: 2021-12-29 12:23:41
+ * @LastEditors: GZH
+ * @LastEditTime: 2021-12-29 13:45:22
+ * @FilePath: \qrcode-proj\src\icons\index.ts
+ * @Description:
+ */
+import SvgIcon from '@/components/SvgIcon/index.vue'
+
+// https://webpack.docschina.org/guides/dependency-management/#requirecontext
+// 通过 require.context() 函数来创建自己的 context
+const svgRequire = require.context('./svg', false, /\.svg$/)
+// 此时返回一个 require 的函数，可以接受一个 request 的参数，用于 require 的导入。
+// 该函数提供了三个属性，可以通过 require.keys() 获取到所有的 svg 图标
+// 遍历图标，把图标作为 request 传入到 require 导入函数中，完成本地 svg 图标的导入
+svgRequire.keys().forEach((svgIcon) => svgRequire(svgIcon))
+
+export default (app: any) => {
+  app.component('svg-icon', SvgIcon)
+}

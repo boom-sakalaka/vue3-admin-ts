@@ -2,11 +2,11 @@
  * @Author: GZH
  * @Date: 2021-12-29 13:53:43
  * @LastEditors: GZH
- * @LastEditTime: 2021-12-31 17:56:29
- * @FilePath: \qrcode-proj\src\utils\request2.ts
+ * @LastEditTime: 2022-01-01 12:06:17
+ * @FilePath: \vue3-admin-ts\src\utils\request2.ts
  * @Description:封装登录请求 https://github.dev/buqiyuan/vue3-antd-admin
  */
-import axios, { AxiosError, AxiosRequestConfig, AxiosResponse } from 'axios'
+import axios, { AxiosRequestConfig } from 'axios'
 import { ElMessage } from 'element-plus'
 import store from '@/store'
 import { isCheckTimeout } from '@/utils/auth'
@@ -40,6 +40,11 @@ service.interceptors.request.use(
   (config) => {
     const token = localStorage.getItem('token')
     if (token && config.headers) {
+      // 时间过期
+      if (isCheckTimeout()) {
+        store.dispatch('user/logout')
+        return Promise.reject(new Error('token 失效'))
+      }
       config.headers.Authorization = token
     }
     return config

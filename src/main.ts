@@ -2,7 +2,7 @@
  * @Author: GZH
  * @Date: 2021-12-29 11:26:16
  * @LastEditors: GZH
- * @LastEditTime: 2022-01-01 17:39:52
+ * @LastEditTime: 2022-01-01 22:00:38
  * @FilePath: \vue3-admin-ts\src\main.ts
  * @Description:
  */
@@ -15,6 +15,9 @@ import createPinia from '@/piniaStore'
 
 // 导入 全局注册 icons 组件
 import installIcons from '@/icons'
+
+// 导入路由鉴权
+import './permission'
 
 const app = createApp(App)
 installElementPlus(app)

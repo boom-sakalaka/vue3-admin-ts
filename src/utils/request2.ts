@@ -2,13 +2,13 @@
  * @Author: GZH
  * @Date: 2021-12-29 13:53:43
  * @LastEditors: GZH
- * @LastEditTime: 2022-01-01 18:00:49
+ * @LastEditTime: 2022-01-01 21:24:53
  * @FilePath: \vue3-admin-ts\src\utils\request2.ts
  * @Description:封装登录请求 https://github.dev/buqiyuan/vue3-antd-admin
  */
 import axios, { AxiosRequestConfig } from 'axios'
 import { ElMessage } from 'element-plus'
-// import store from '@/store'
+import { useUserStore } from '@/piniaStore/user'
 import { isCheckTimeout } from '@/utils/auth'
 
 export interface RequestOptions {
@@ -38,14 +38,15 @@ const service = axios.create({
 
 service.interceptors.request.use(
   (config) => {
-    const token = localStorage.getItem('token')
+    const userStore = useUserStore()
+    const token = userStore.token
     if (token && config.headers) {
       // 时间过期
       if (isCheckTimeout()) {
         // store.dispatch('user/logout')
         return Promise.reject(new Error('token 失效'))
       }
-      config.headers.Authorization = token
+      config.headers.Authorization = `Bearer ${token}`
     }
     return config
   },
@@ -80,6 +81,7 @@ export type Response<T = any> = {
   code: number
   message: string
   data: T
+  success: boolean
 }
 
 export type BaseResponse<T = any> = Promise<Response<T>>
@@ -102,7 +104,7 @@ export const request = async <T = any>(
       ElMessage.error('你没有访问该接口的权限，请联系管理员！')
       return Promise.reject(new Error('e'))
     }
-    const fullUrl = `${(isMock ? mockUrl : baseUrl) + config.url}`
+    const fullUrl = `${(isMock ? mockUrl : baseUrl) + '/' + config.url}`
     config.url = fullUrl.replace(/(?<!:)\/{2,}/g, '/')
 
     const res = await service.request(config)

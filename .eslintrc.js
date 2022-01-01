@@ -2,7 +2,7 @@
  * @Author: GZH
  * @Date: 2021-12-29 11:26:16
  * @LastEditors: GZH
- * @LastEditTime: 2022-01-01 18:04:01
+ * @LastEditTime: 2022-01-01 19:57:14
  * @FilePath: \vue3-admin-ts\.eslintrc.js
  * @Description:
  */
@@ -21,9 +21,9 @@ module.exports = {
     '@typescript-eslint/no-empty-function': 'off',
     'space-before-function-paren': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
-    'no-unused-expressions': 'off' // 箭头函数可用
+    'no-unused-expressions': 'off', // 箭头函数可用
+    '@typescript-eslint/ban-types': 'off' // 可以使用 object
   }
 }
 
-// '@typescript-eslint/ban-types': 'off',
 // '@typescript-eslint/explicit-module-boundary-types': 'off'

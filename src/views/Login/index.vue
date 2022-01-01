@@ -2,7 +2,7 @@
  * @Author: GZH
  * @Date: 2021-12-29 11:37:17
  * @LastEditors: GZH
- * @LastEditTime: 2022-01-01 18:25:45
+ * @LastEditTime: 2022-01-01 21:27:01
  * @FilePath: \vue3-admin-ts\src\views\Login\index.vue
  * @Description: 登录页
 -->
@@ -46,7 +46,7 @@
         @click="handlerLogin"
         :loading="loading"
       >
-        登录{{ userStore.token }}
+        登录
       </el-button>
     </el-form>
   </div>
@@ -54,7 +54,6 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
-
 import { useUserStore } from '@/piniaStore/user'
 import { validatePassword, validateUsername, callBcak } from './rules'
 import type { ElForm } from 'element-plus'
@@ -64,24 +63,23 @@ interface IloginForm {
   username: string
   password: string
 }
+
+interface IValidator {
+  (rule: object, value: string, callback: callBcak): void
+}
+
 interface IloginRules {
   username: {
     required: boolean
     trigger: string
-    validator: (rule: unknown, value: string, callback: callBcak) => void
+    validator: IValidator
   }[]
   password: {
     required: boolean
     trigger: string
-    validator: (rule: unknown, value: string, callback: callBcak) => void
+    validator: IValidator
   }[]
 }
-
-// 数据源
-const loginForm = ref<IloginForm>({
-  username: 'super-admin',
-  password: '123456'
-})
 
 // 验证规则
 const loginRules = ref<IloginRules>({
@@ -100,6 +98,11 @@ const loginRules = ref<IloginRules>({
     }
   ]
 })
+// 数据源
+const loginForm = ref<IloginForm>({
+  username: 'super-admin',
+  password: '123456'
+})
 
 // 处理密码框文本显示
 const passwordType = ref<'password' | 'text'>('password')
@@ -114,21 +117,23 @@ const loginFormRef = ref<ElFormInstance>()
 const userStore = useUserStore()
 const handlerLogin = (): void => {
   // test
-  userStore.changeToken()
-  // 进行表单校验
+
+  // 1.进行表单校验
   loginFormRef.value?.validate((valid) => {
     if (!valid) return
     loading.value = true
-    // store
-    //   .dispatch('user/login', loginForm.value)
-    //   .then(() => {
-    //     loading.value = false
-    //     // 3.进行登录后的处理
-    //   })
-    //   .catch((err) => {
-    //     console.log(err)
-    //     loading.value = false
-    //   })
+    // 2.登录校验
+    userStore
+      .login(loginForm.value)
+      .then(() => {
+        // 3.进行登录后的处理
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+      .finally(() => {
+        loading.value = false
+      })
   })
 }
 </script>

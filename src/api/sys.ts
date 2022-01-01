@@ -2,27 +2,33 @@
  * @Author: GZH
  * @Date: 2021-12-29 14:51:36
  * @LastEditors: GZH
- * @LastEditTime: 2021-12-29 16:20:25
- * @FilePath: \qrcode-proj\src\api\sys.ts
+ * @LastEditTime: 2022-01-01 20:38:10
+ * @FilePath: \vue3-admin-ts\src\api\sys.ts
  * @Description:
  */
-import request from '@/utils/request'
+import { request } from '@/utils/request2'
 
-import { IResponseType } from '@/types/responseType'
+interface ILoginInData {
+  token: string
+}
 
+export interface ILoginQuery {
+  username: string
+  password: string
+}
 /** 登录请求 */
-export const login = <T>(data: any): Promise<T> => {
-  return request({
+export const login = (data: ILoginQuery): Promise<ILoginInData> => {
+  return request<ILoginInData>({
     url: 'sys/login',
     method: 'POST',
     data
-  }) as unknown as Promise<T>
+  })
 }
 
 /* 获取用户信息 */
-export const getUserInfo = <T>(): Promise<T> => {
-  return request({
-    url: 'sys/profile',
-    method: 'GET'
-  }) as unknown as Promise<T>
-}
+// export const getUserInfo = <T>(): Promise<T> => {
+//   return request({
+//     url: 'sys/profile',
+//     method: 'GET'
+//   })
+// }

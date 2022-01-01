@@ -2,7 +2,7 @@
  * @Author: GZH
  * @Date: 2021-12-29 11:26:16
  * @LastEditors: GZH
- * @LastEditTime: 2022-01-01 21:41:39
+ * @LastEditTime: 2022-01-01 23:10:05
  * @FilePath: \vue3-admin-ts\src\router\index.ts
  * @Description:
  */
@@ -18,7 +18,7 @@ const publicRoutes: Array<RouteRecordRaw> = [
   {
     path: '/',
     name: 'layout',
-    component: () => import(/* webpackChunkName: "profile" */ '../layout/index.vue')
+    component: () => import(/* webpackChunkName: "layout" */ '../layout/index.vue')
   }
 ]
 

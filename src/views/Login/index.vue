@@ -2,8 +2,8 @@
  * @Author: GZH
  * @Date: 2021-12-29 11:37:17
  * @LastEditors: GZH
- * @LastEditTime: 2021-12-29 14:46:53
- * @FilePath: \qrcode-proj\src\views\Login\index.vue
+ * @LastEditTime: 2022-01-01 18:25:45
+ * @FilePath: \vue3-admin-ts\src\views\Login\index.vue
  * @Description: 登录页
 -->
 <template>
@@ -45,16 +45,19 @@
         style="width: 100%; margin-bottom: 30px"
         @click="handlerLogin"
         :loading="loading"
-        >登录</el-button
       >
+        登录{{ userStore.token }}
+      </el-button>
     </el-form>
   </div>
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import { useStore } from 'vuex'
+
+import { useUserStore } from '@/piniaStore/user'
 import { validatePassword, validateUsername, callBcak } from './rules'
+import type { ElForm } from 'element-plus'
 
 // 类型定义
 interface IloginForm {
@@ -81,7 +84,6 @@ const loginForm = ref<IloginForm>({
 })
 
 // 验证规则
-// const i18n = useI18n()
 const loginRules = ref<IloginRules>({
   username: [
     {
@@ -107,26 +109,30 @@ const onChangePwdType = (): void => {
 
 // 处理登录逻辑
 const loading = ref<boolean>(false)
-const store = useStore()
-const loginFormRef = ref<any>(null)
+type ElFormInstance = InstanceType<typeof ElForm>
+const loginFormRef = ref<ElFormInstance>()
+const userStore = useUserStore()
 const handlerLogin = (): void => {
+  // test
+  userStore.changeToken()
   // 进行表单校验
-  loginFormRef.value?.vaildate((valid: boolean) => {
+  loginFormRef.value?.validate((valid) => {
     if (!valid) return
     loading.value = true
-    store
-      .dispatch('user/login', loginForm.value)
-      .then(() => {
-        loading.value = false
-        // 3.进行登录后的处理
-      })
-      .catch((err) => {
-        console.log(err)
-        loading.value = false
-      })
+    // store
+    //   .dispatch('user/login', loginForm.value)
+    //   .then(() => {
+    //     loading.value = false
+    //     // 3.进行登录后的处理
+    //   })
+    //   .catch((err) => {
+    //     console.log(err)
+    //     loading.value = false
+    //   })
   })
 }
 </script>
+
 <style scoped lang="scss">
 $bg: #2d3a4b;
 $dark_gray: #889aa4;

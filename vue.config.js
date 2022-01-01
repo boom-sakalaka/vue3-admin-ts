@@ -2,8 +2,8 @@
  * @Author: GZH
  * @Date: 2021-11-14 16:04:15
  * @LastEditors: GZH
- * @LastEditTime: 2021-12-29 13:49:02
- * @FilePath: \qrcode-proj\vue.config.js
+ * @LastEditTime: 2022-01-01 18:07:48
+ * @FilePath: \vue3-admin-ts\vue.config.js
  * @Description:
  */
 // eslint-disable-next-line @typescript-eslint/no-var-requires
@@ -14,6 +14,8 @@ function resolve(dir) {
 // https://cli.vuejs.org/zh/guide/webpack.html#%E7%AE%80%E5%8D%95%E7%9A%84%E9%85%8D%E7%BD%AE%E6%96%B9%E5%BC%8F
 module.exports = {
   devServer: {
+    disableHostCheck: true,
+    port: 'your port',
     // 配置反向代理
     proxy: {
       // 当地址中有/api的时候会触发代理机制

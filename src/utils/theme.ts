@@ -3,8 +3,8 @@
  * @Author: GZH
  * @Date: 2021-12-19 18:05:43
  * @LastEditors: GZH
- * @LastEditTime: 2021-12-29 16:43:14
- * @FilePath: \qrcode-proj\src\utils\theme.ts
+ * @LastEditTime: 2022-01-01 18:03:32
+ * @FilePath: \vue3-admin-ts\src\utils\theme.ts
  * @Description: 生成主题色样式表相关
  */
 import formula from '@/constant/formula.json'
@@ -16,7 +16,7 @@ const color = require('css-color-function')
 /**
  * 生成的样式表写入到style中
  */
-export const writeNewStyle = (newStyle: string) => {
+export const writeNewStyle = (newStyle: string): void => {
   const style = document.createElement('style')
   style.innerText = newStyle
   document.head.appendChild(style)

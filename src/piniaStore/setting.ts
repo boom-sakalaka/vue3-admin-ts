@@ -2,7 +2,7 @@
  * @Author: GZH
  * @Date: 2022-01-02 11:48:40
  * @LastEditors: GZH
- * @LastEditTime: 2022-01-02 11:51:45
+ * @LastEditTime: 2022-01-02 12:14:03
  * @FilePath: \vue3-admin-ts\src\piniaStore\setting.ts
  * @Description:
  */
@@ -22,11 +22,18 @@ interface ICssVarData {
 
 interface ISettingStore {
   cssVar: ICssVarData
+  sidebarOpened: boolean
 }
 
 export const useSettingStore = defineStore({
   id: 'setting',
   state: (): ISettingStore => ({
-    cssVar: variables
-  })
+    cssVar: variables,
+    sidebarOpened: true
+  }),
+  actions: {
+    triggerSidebarOpened() {
+      this.sidebarOpened = !this.sidebarOpened
+    }
+  }
 })

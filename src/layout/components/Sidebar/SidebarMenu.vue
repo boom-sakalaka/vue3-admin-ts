@@ -2,12 +2,13 @@
  * @Author: GZH
  * @Date: 2022-01-02 10:32:38
  * @LastEditors: GZH
- * @LastEditTime: 2022-01-02 11:54:58
+ * @LastEditTime: 2022-01-02 12:12:59
  * @FilePath: \vue3-admin-ts\src\layout\components\Sidebar\SidebarMenu.vue
  * @Description:
 -->
 <template>
   <el-menu
+    :collapse="settingStore.sidebarOpened"
     :uniqueOpened="true"
     :default-active="activeMenu"
     :background-color="settingStore.cssVar.menuBg"

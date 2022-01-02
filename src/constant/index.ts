@@ -2,8 +2,8 @@
  * @Author: GZH
  * @Date: 2021-11-14 17:39:31
  * @LastEditors: GZH
- * @LastEditTime: 2021-12-26 14:58:29
- * @FilePath: \vue3-admin\src\constant\index.js
+ * @LastEditTime: 2022-01-02 10:07:02
+ * @FilePath: \vue3-admin-ts\src\constant\index.ts
  * @Description: 常量
  */
 

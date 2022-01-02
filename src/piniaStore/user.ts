@@ -2,7 +2,7 @@
  * @Author: GZH
  * @Date: 2022-01-01 17:40:51
  * @LastEditors: GZH
- * @LastEditTime: 2022-01-01 23:10:36
+ * @LastEditTime: 2022-01-02 09:55:00
  * @FilePath: \vue3-admin-ts\src\piniaStore\user.ts
  * @Description: 用户数据 全局共享
  */
@@ -11,7 +11,7 @@ import md5 from 'md5'
 import { login, getUserInfo, IUserInfo } from '@/api/sys'
 import type { ILoginQuery } from '@/api/sys'
 import router from '@/router'
-import { setItem, getItem } from '@/utils/storage'
+import { setItem, getItem, removeAllItem } from '@/utils/storage'
 import { TOKEN } from '@/constant'
 import { setTimeStamp } from '@/utils/auth'
 
@@ -64,6 +64,13 @@ export const useUserStore = defineStore({
       const res = await getUserInfo()
       this.userInfo = res
       return res
+    },
+    logout() {
+      this.token = ''
+      this.userInfo = {}
+      removeAllItem()
+      // TODO 权限相关
+      router.push('/login')
     }
   }
 })

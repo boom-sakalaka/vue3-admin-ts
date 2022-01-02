@@ -2,7 +2,7 @@
  * @Author: GZH
  * @Date: 2021-12-29 13:53:43
  * @LastEditors: GZH
- * @LastEditTime: 2022-01-01 21:24:53
+ * @LastEditTime: 2022-01-02 10:17:57
  * @FilePath: \vue3-admin-ts\src\utils\request2.ts
  * @Description:封装登录请求 https://github.dev/buqiyuan/vue3-antd-admin
  */
@@ -43,7 +43,7 @@ service.interceptors.request.use(
     if (token && config.headers) {
       // 时间过期
       if (isCheckTimeout()) {
-        // store.dispatch('user/logout')
+        userStore.logout()
         return Promise.reject(new Error('token 失效'))
       }
       config.headers.Authorization = `Bearer ${token}`
@@ -69,8 +69,18 @@ service.interceptors.response.use(
     }
   },
   (error) => {
+    // token 过期
+    let errMsg = error.message
+    if (error?.response?.data?.code === 401) {
+      const userStore = useUserStore()
+      userStore.logout()
+      errMsg = error?.response?.data?.message ?? UNKNOWN_ERROR
+    }
+
     // 处理 422 或者 500 的错误异常提示
-    const errMsg = error?.response?.data?.message ?? UNKNOWN_ERROR
+    // const errMsg = error?.response?.data?.message ?? UNKNOWN_ERROR
+    // ElMessage.error(errMsg)
+
     ElMessage.error(errMsg)
     error.message = errMsg
     return Promise.reject(error)

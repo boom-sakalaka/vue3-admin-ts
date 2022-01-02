@@ -2,7 +2,7 @@
  * @Author: GZH
  * @Date: 2021-12-29 11:26:16
  * @LastEditors: GZH
- * @LastEditTime: 2022-01-02 10:40:27
+ * @LastEditTime: 2022-01-02 16:51:23
  * @FilePath: \vue3-admin-ts\src\router\index.ts
  * @Description:
  */
@@ -118,7 +118,7 @@ const privateRouters: RouteRecordRaw[] = [
 const publicRoutes: RouteRecordRaw[] = [
   {
     path: '/login',
-    component: () => import('@/views/login/index.vue')
+    component: () => import('@/views/Login/index.vue')
   },
   {
     path: '/',

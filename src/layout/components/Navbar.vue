@@ -2,12 +2,14 @@
  * @Author: GZH
  * @Date: 2022-01-01 22:22:16
  * @LastEditors: GZH
- * @LastEditTime: 2022-01-02 09:56:20
+ * @LastEditTime: 2022-01-02 16:47:27
  * @FilePath: \vue3-admin-ts\src\layout\components\Navbar.vue
  * @Description:
 -->
 <template>
   <div class="navbar">
+    <!-- 汉堡 -->
+    <hamburger class="hambruger-container" id="guide-hamburger" />
     <div class="right-menu">
       <!-- 头像 -->
       <el-dropdown class="avatar-container" trigger="click">
@@ -33,6 +35,7 @@
 
 <script setup lang="ts">
 import { useUserStore } from '@/piniaStore/user'
+import Hamburger from '@/components/hamburger/index.vue'
 
 const userStore = useUserStore()
 // 退出登录

@@ -2,8 +2,8 @@
  * @Author: GZH
  * @Date: 2021-12-29 11:37:17
  * @LastEditors: GZH
- * @LastEditTime: 2022-01-01 21:27:01
- * @FilePath: \vue3-admin-ts\src\views\Login\index.vue
+ * @LastEditTime: 2022-01-02 16:55:43
+ * @FilePath: \vue3-admin-ts\src\views\login\index.vue
  * @Description: 登录页
 -->
 <template>
@@ -12,6 +12,7 @@
       <div class="title-container">
         <h3 class="title">二维码管理系统</h3>
       </div>
+
       <!-- username -->
       <el-form-item prop="username">
         <span class="svg-container">

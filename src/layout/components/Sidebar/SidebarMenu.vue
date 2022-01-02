@@ -2,13 +2,13 @@
  * @Author: GZH
  * @Date: 2022-01-02 10:32:38
  * @LastEditors: GZH
- * @LastEditTime: 2022-01-02 12:12:59
+ * @LastEditTime: 2022-01-02 17:29:27
  * @FilePath: \vue3-admin-ts\src\layout\components\Sidebar\SidebarMenu.vue
  * @Description:
 -->
 <template>
   <el-menu
-    :collapse="settingStore.sidebarOpened"
+    :collapse="!settingStore.sidebarOpened"
     :uniqueOpened="true"
     :default-active="activeMenu"
     :background-color="settingStore.cssVar.menuBg"
@@ -16,7 +16,7 @@
     :active-text-color="settingStore.cssVar.menuActiveText"
     router
   >
-    <SidebarItem v-for="item in routes" :key="item.path" :route="item" />
+    <sidebar-item v-for="item in routes" :key="item.path" :route="item" />
   </el-menu>
 </template>
 

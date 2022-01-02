@@ -2,12 +2,12 @@
  * @Author: GZH
  * @Date: 2022-01-01 21:40:58
  * @LastEditors: GZH
- * @LastEditTime: 2022-01-01 22:45:39
+ * @LastEditTime: 2022-01-02 17:07:33
  * @FilePath: \vue3-admin-ts\src\layout\index.vue
  * @Description: 框架页面
 -->
 <template>
-  <div class="app-wrapper">
+  <div class="app-wrapper" :class="[settingSote.sidebarOpened ? 'openSidebar' : 'hideSidebar']">
     <!-- 左侧mune -->
     <sidebar
       id="guide-sidebar"
@@ -32,6 +32,9 @@ import Navbar from './components/Navbar.vue'
 import Sidebar from './components/Sidebar/index.vue'
 import AppMain from './components/AppMain.vue'
 import variables from '@/styles/variables.scss'
+import { useSettingStore } from '@/piniaStore/setting'
+
+const settingSote = useSettingStore()
 </script>
 <style lang="scss" scoped>
 @import '../styles/mixin.scss';

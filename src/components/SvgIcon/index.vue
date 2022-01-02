@@ -2,24 +2,22 @@
  * @Author: GZH
  * @Date: 2021-12-29 12:25:32
  * @LastEditors: GZH
- * @LastEditTime: 2021-12-29 13:44:55
- * @FilePath: \qrcode-proj\src\components\SvgIcon\index.vue
+ * @LastEditTime: 2022-01-02 17:38:08
+ * @FilePath: \vue3-admin-ts\src\components\SvgIcon\index.vue
  * @Description: 图标
 -->
 <template>
-  <span>
-    <!-- 展示外部图标 -->
-    <div
-      class="svg-external-icon svg-icon"
-      v-if="isExternal"
-      :style="styleExternalIcon"
-      :class="className"
-    ></div>
-    <!-- 展示内部图标 -->
-    <svg v-else class="svg-icon" :class="className" aria-hidden="true">
-      <use :xlink:href="iconName" />
-    </svg>
-  </span>
+  <!-- 展示外部图标 -->
+  <div
+    class="svg-external-icon svg-icon"
+    v-if="isExternal"
+    :style="styleExternalIcon"
+    :class="className"
+  ></div>
+  <!-- 展示内部图标 -->
+  <svg v-else class="svg-icon" :class="className" aria-hidden="true">
+    <use :xlink:href="iconName" />
+  </svg>
 </template>
 
 <script setup lang="ts">

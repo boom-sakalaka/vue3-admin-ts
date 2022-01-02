@@ -2,7 +2,7 @@
  * @Author: GZH
  * @Date: 2022-01-01 22:22:16
  * @LastEditors: GZH
- * @LastEditTime: 2022-01-02 16:47:27
+ * @LastEditTime: 2022-01-02 17:44:46
  * @FilePath: \vue3-admin-ts\src\layout\components\Navbar.vue
  * @Description:
 -->
@@ -14,7 +14,7 @@
       <!-- 头像 -->
       <el-dropdown class="avatar-container" trigger="click">
         <div class="avatar-wrapper">
-          <el-avatar shape="square" :size="40" :src="userStore.userInfo.avatar"></el-avatar>
+          <el-avatar shape="square" :size="40" :src="userStore.userInfo.avatar + '1'"></el-avatar>
           <i class="el-icon-s-tools"></i>
         </div>
         <template #dropdown>

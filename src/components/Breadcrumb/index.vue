@@ -2,7 +2,7 @@
  * @Author: GZH
  * @Date: 2022-01-02 19:33:31
  * @LastEditors: GZH
- * @LastEditTime: 2022-01-02 19:42:09
+ * @LastEditTime: 2022-01-03 14:30:18
  * @FilePath: \vue3-admin-ts\src\components\Breadcrumb\index.vue
  * @Description: 面包屑导航
 -->
@@ -12,11 +12,11 @@
       <el-breadcrumb-item v-for="(item, index) in breadcrumData" :key="item.path">
         <!-- 不可点击项目 -->
         <span v-if="index === breadcrumData.length - 1" class="no-redirect">
-          {{ item.meta!.title }}
+          {{ generateTitle(item.meta!.title!) }}
         </span>
         <!-- 可点击项 -->
         <span v-else class="redirect" @click="onLinkClick(item)">
-          {{ item.meta!.title }}
+          {{ generateTitle(item.meta!.title!) }}
         </span>
       </el-breadcrumb-item>
     </transition-group>
@@ -27,6 +27,8 @@
 import { ref, watch } from 'vue'
 import { useRoute, useRouter, RouteRecordRaw } from 'vue-router'
 import { useSettingStore } from '@/piniaStore/setting'
+import { generateTitle } from '@/utils/i18n'
+
 // 生成数组数据
 const breadcrumData = ref<RouteRecordRaw[]>([])
 const getBreadcrumData = () => {

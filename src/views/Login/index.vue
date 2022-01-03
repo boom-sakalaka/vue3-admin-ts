@@ -2,7 +2,7 @@
  * @Author: GZH
  * @Date: 2021-12-29 11:37:17
  * @LastEditors: GZH
- * @LastEditTime: 2022-01-03 11:22:08
+ * @LastEditTime: 2022-01-03 14:01:45
  * @FilePath: \vue3-admin-ts\src\views\Login\index.vue
  * @Description: 登录页
 -->
@@ -10,7 +10,7 @@
   <div class="login-container">
     <el-form class="login-from" :model="loginForm" :rules="loginRules" ref="loginFormRef">
       <div class="title-container">
-        <h3 class="title">二维码管理系统</h3>
+        <h3 class="title">{{ $t('msg.login.title') }}</h3>
         <lang-select effect="light" class="lang-select" />
       </div>
 
@@ -48,7 +48,7 @@
         @click="handlerLogin"
         :loading="loading"
       >
-        登录
+        {{ $t('msg.login.loginBtn') }}
       </el-button>
     </el-form>
   </div>

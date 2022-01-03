@@ -2,7 +2,7 @@
  * @Author: GZH
  * @Date: 2022-01-03 10:33:00
  * @LastEditors: GZH
- * @LastEditTime: 2022-01-03 13:31:17
+ * @LastEditTime: 2022-01-03 14:10:15
  * @FilePath: \vue3-admin-ts\src\components\langSelect\index.vue
  * @Description:
 -->
@@ -46,7 +46,7 @@ const handleSetLanguage = (lang: string): void => {
   i18n.locale.value = lang
   settingStore.setLanguage(lang)
   // 提示
-  ElMessage.success('切换语言成功')
+  ElMessage.success(i18n.t('msg.toast.switchLangSuccess'))
 }
 </script>
 <style lang="scss" scoped></style>

@@ -2,7 +2,7 @@
  * @Author: GZH
  * @Date: 2022-01-01 22:22:16
  * @LastEditors: GZH
- * @LastEditTime: 2022-01-03 15:40:37
+ * @LastEditTime: 2022-01-03 21:53:04
  * @FilePath: \vue3-admin-ts\src\layout\components\Navbar.vue
  * @Description:
 -->
@@ -13,6 +13,7 @@
     <!-- 面包屑导航 -->
     <breadcrumb class="breadcrumb-container" id="guide-breadcrumb" />
     <div class="right-menu">
+      <screen-full class="right-menu-item hover-effect"></screen-full>
       <lang-select class="right-menu-item hover-effect"></lang-select>
       <theme-select class="right-menu-item hover-effect"></theme-select>
       <!-- 头像 -->
@@ -45,6 +46,7 @@ import Hamburger from '@/components/hamburger/index.vue'
 import Breadcrumb from '@/components/Breadcrumb/index.vue'
 import LangSelect from '@/components/langSelect/index.vue'
 import ThemeSelect from '@/components/ThemeSelect/index.vue'
+import ScreenFull from '@/components/Screenfull/index.vue'
 
 const userStore = useUserStore()
 // 退出登录

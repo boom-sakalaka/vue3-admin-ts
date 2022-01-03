@@ -2,7 +2,7 @@
  * @Author: GZH
  * @Date: 2022-01-01 22:22:16
  * @LastEditors: GZH
- * @LastEditTime: 2022-01-03 14:20:52
+ * @LastEditTime: 2022-01-03 15:40:37
  * @FilePath: \vue3-admin-ts\src\layout\components\Navbar.vue
  * @Description:
 -->
@@ -14,6 +14,7 @@
     <breadcrumb class="breadcrumb-container" id="guide-breadcrumb" />
     <div class="right-menu">
       <lang-select class="right-menu-item hover-effect"></lang-select>
+      <theme-select class="right-menu-item hover-effect"></theme-select>
       <!-- 头像 -->
       <el-dropdown class="avatar-container" trigger="click">
         <div class="avatar-wrapper">
@@ -43,6 +44,7 @@ import { useUserStore } from '@/piniaStore/user'
 import Hamburger from '@/components/hamburger/index.vue'
 import Breadcrumb from '@/components/Breadcrumb/index.vue'
 import LangSelect from '@/components/langSelect/index.vue'
+import ThemeSelect from '@/components/ThemeSelect/index.vue'
 
 const userStore = useUserStore()
 // 退出登录

@@ -2,7 +2,7 @@
  * @Author: GZH
  * @Date: 2021-11-14 17:30:17
  * @LastEditors: GZH
- * @LastEditTime: 2022-01-03 11:09:00
+ * @LastEditTime: 2022-01-03 16:01:44
  * @FilePath: \vue3-admin-ts\src\utils\storage.ts
  * @Description: localStorage 的使用
  */
@@ -41,16 +41,6 @@ export const removeItem = (key: string): void => {
 /**
  * 删除所有数据
  */
-export const removeAllItem = (ex: string[] = []): void => {
-  try {
-    const len = localStorage.length
-    for (let i = 0; i < len; i++) {
-      const key: string = localStorage.key(i) as string
-      if (!ex.includes(key)) {
-        window.localStorage.removeItem(key)
-      }
-    }
-  } catch (err) {
-    window.localStorage.clear()
-  }
+export const removeAllItem = (): void => {
+  window.localStorage.clear()
 }

@@ -2,9 +2,9 @@
  * @Author: GZH
  * @Date: 2022-01-02 10:32:38
  * @LastEditors: GZH
- * @LastEditTime: 2022-01-02 17:29:27
+ * @LastEditTime: 2022-01-03 15:07:51
  * @FilePath: \vue3-admin-ts\src\layout\components\Sidebar\SidebarMenu.vue
- * @Description:
+ * @Description: 菜单项
 -->
 <template>
   <el-menu

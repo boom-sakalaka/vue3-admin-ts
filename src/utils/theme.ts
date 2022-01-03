@@ -3,7 +3,7 @@
  * @Author: GZH
  * @Date: 2021-12-19 18:05:43
  * @LastEditors: GZH
- * @LastEditTime: 2022-01-01 18:03:32
+ * @LastEditTime: 2022-01-03 15:45:31
  * @FilePath: \vue3-admin-ts\src\utils\theme.ts
  * @Description: 生成主题色样式表相关
  */
@@ -64,7 +64,7 @@ export const genenrateColor = (primary: string): any => {
 /**
  * 获取当前element-plus 的默认样式表
  */
-export const getOriginStyle = async () => {
+export const getOriginStyle = async (): Promise<any> => {
   // https://unpkg.com/element-plus@1.1.0-beta.19/dist/index.css
   const version = require('element-plus/package.json').version
   const url = `https://unpkg.com/element-plus@${version}/dist/index.css`

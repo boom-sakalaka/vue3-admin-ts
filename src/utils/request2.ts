@@ -2,9 +2,9 @@
  * @Author: GZH
  * @Date: 2021-12-29 13:53:43
  * @LastEditors: GZH
- * @LastEditTime: 2022-01-02 10:17:57
+ * @LastEditTime: 2022-01-03 16:32:54
  * @FilePath: \vue3-admin-ts\src\utils\request2.ts
- * @Description:封装登录请求 https://github.dev/buqiyuan/vue3-antd-admin
+ * @Description: 封装登录请求 https://github.dev/buqiyuan/vue3-antd-admin
  */
 import axios, { AxiosRequestConfig } from 'axios'
 import { ElMessage } from 'element-plus'

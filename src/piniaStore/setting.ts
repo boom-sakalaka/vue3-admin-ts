@@ -2,14 +2,15 @@
  * @Author: GZH
  * @Date: 2022-01-02 11:48:40
  * @LastEditors: GZH
- * @LastEditTime: 2022-01-03 10:16:14
+ * @LastEditTime: 2022-01-03 16:22:55
  * @FilePath: \vue3-admin-ts\src\piniaStore\setting.ts
- * @Description:
+ * @Description: 全局配置
  */
 import { defineStore } from 'pinia'
 import variables from '@/styles/variables.scss'
 import { getItem, setItem } from '@/utils/storage'
-import { LANG } from '@/constant'
+import { LANG, MAIN_COLOR, DEFAULT_COLOR } from '@/constant'
+import { genenrateColor } from '@/utils/theme'
 
 interface ICssVarData {
   menuText: string
@@ -23,18 +24,28 @@ interface ICssVarData {
 }
 
 interface ISettingStore {
-  cssVar: ICssVarData
   sidebarOpened: boolean
   language: string
+  mainColor: string
+  variables: ICssVarData
 }
 
 export const useSettingStore = defineStore({
   id: 'setting',
   state: (): ISettingStore => ({
-    cssVar: variables,
+    variables: variables,
     sidebarOpened: true,
-    language: (getItem(LANG) as string) || 'zh'
+    language: (getItem(LANG) as string) || 'zh',
+    mainColor: (getItem(MAIN_COLOR) as string) || DEFAULT_COLOR
   }),
+  getters: {
+    cssVar: (state): ICssVarData => {
+      return {
+        ...state.variables,
+        ...genenrateColor(state.mainColor)
+      }
+    }
+  },
   actions: {
     triggerSidebarOpened() {
       this.sidebarOpened = !this.sidebarOpened
@@ -42,6 +53,11 @@ export const useSettingStore = defineStore({
     setLanguage(lang: string) {
       setItem(LANG, lang)
       this.language = lang
+    },
+    setMainColor(newColor: string) {
+      this.mainColor = newColor
+      this.variables.menuBg = newColor
+      setItem(MAIN_COLOR, newColor)
     }
   }
 })

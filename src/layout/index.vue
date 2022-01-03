@@ -2,7 +2,7 @@
  * @Author: GZH
  * @Date: 2022-01-01 21:40:58
  * @LastEditors: GZH
- * @LastEditTime: 2022-01-02 17:07:33
+ * @LastEditTime: 2022-01-03 15:49:53
  * @FilePath: \vue3-admin-ts\src\layout\index.vue
  * @Description: 框架页面
 -->
@@ -12,7 +12,7 @@
     <sidebar
       id="guide-sidebar"
       class="sidebar-container"
-      :style="{ backgroundColor: variables.menuBg }"
+      :style="{ backgroundColor: settingSote.cssVar.menuBg }"
     />
     <div class="main-container">
       <div class="fixed-header">
@@ -31,7 +31,6 @@
 import Navbar from './components/Navbar.vue'
 import Sidebar from './components/Sidebar/index.vue'
 import AppMain from './components/AppMain.vue'
-import variables from '@/styles/variables.scss'
 import { useSettingStore } from '@/piniaStore/setting'
 
 const settingSote = useSettingStore()

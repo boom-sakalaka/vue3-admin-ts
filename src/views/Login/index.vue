@@ -2,8 +2,8 @@
  * @Author: GZH
  * @Date: 2021-12-29 11:37:17
  * @LastEditors: GZH
- * @LastEditTime: 2022-01-02 16:55:43
- * @FilePath: \vue3-admin-ts\src\views\login\index.vue
+ * @LastEditTime: 2022-01-03 11:22:08
+ * @FilePath: \vue3-admin-ts\src\views\Login\index.vue
  * @Description: 登录页
 -->
 <template>
@@ -11,6 +11,7 @@
     <el-form class="login-from" :model="loginForm" :rules="loginRules" ref="loginFormRef">
       <div class="title-container">
         <h3 class="title">二维码管理系统</h3>
+        <lang-select effect="light" class="lang-select" />
       </div>
 
       <!-- username -->
@@ -58,6 +59,7 @@ import { ref } from 'vue'
 import { useUserStore } from '@/piniaStore/user'
 import { validatePassword, validateUsername, callBcak } from './rules'
 import type { ElForm } from 'element-plus'
+import LangSelect from '@/components/langSelect/index.vue'
 
 // 类型定义
 interface IloginForm {

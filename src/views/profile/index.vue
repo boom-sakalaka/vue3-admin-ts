@@ -2,13 +2,13 @@
  * @Author: GZH
  * @Date: 2021-12-07 20:50:59
  * @LastEditors: GZH
- * @LastEditTime: 2021-12-19 19:06:16
- * @FilePath: \vue3-admin\src\views\profile\index.vue
+ * @LastEditTime: 2022-01-03 10:44:49
+ * @FilePath: \vue3-admin-ts\src\views\profile\index.vue
  * @Description:
 -->
 <template>
   <div>
-    <!-- {{ $t('msg.test') }} -->
+    {{ $t('msg.login.title') }}
 
     <el-pagination layout="total, sizes, prev, pager, next, jumper" :total="1000"></el-pagination>
     <el-button>Default</el-button>
@@ -21,7 +21,7 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import {} from 'vue'
 </script>
 

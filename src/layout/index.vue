@@ -2,7 +2,7 @@
  * @Author: GZH
  * @Date: 2022-01-01 21:40:58
  * @LastEditors: GZH
- * @LastEditTime: 2022-01-03 15:49:53
+ * @LastEditTime: 2022-01-04 15:15:32
  * @FilePath: \vue3-admin-ts\src\layout\index.vue
  * @Description: 框架页面
 -->
@@ -19,7 +19,7 @@
         <!-- 顶部navbar -->
         <navbar />
         <!-- tags -->
-        <!-- <tag-view id="guide-tags"></tag-view> -->
+        <tags-view id="guide-tags"></tags-view>
       </div>
       <!-- 内容区 -->
       <app-main />
@@ -31,6 +31,7 @@
 import Navbar from './components/Navbar.vue'
 import Sidebar from './components/Sidebar/index.vue'
 import AppMain from './components/AppMain.vue'
+import TagsView from '@/components/TagsView/index.vue'
 import { useSettingStore } from '@/piniaStore/setting'
 
 const settingSote = useSettingStore()

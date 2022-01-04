@@ -2,7 +2,7 @@
  * @Author: GZH
  * @Date: 2021-12-07 20:50:59
  * @LastEditors: GZH
- * @LastEditTime: 2022-01-03 10:44:49
+ * @LastEditTime: 2022-01-04 15:20:15
  * @FilePath: \vue3-admin-ts\src\views\profile\index.vue
  * @Description:
 -->
@@ -17,12 +17,17 @@
     <el-button type="info">Info</el-button>
     <el-button type="warning">Warning</el-button>
     <el-button type="danger">Danger</el-button>
-    <el-button>中文</el-button>
+    <el-button @click="changea">中文</el-button>
+    {{ aa }}
   </div>
 </template>
 
 <script setup lang="ts">
-import {} from 'vue'
+import { ref } from 'vue'
+const aa = ref(111)
+const changea = () => {
+  aa.value = 123
+}
 </script>
 
 <style lang="scss" scoped></style>

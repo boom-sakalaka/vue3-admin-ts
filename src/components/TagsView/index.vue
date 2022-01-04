@@ -2,7 +2,7 @@
  * @Author: GZH
  * @Date: 2022-01-04 13:46:41
  * @LastEditors: GZH
- * @LastEditTime: 2022-01-04 21:21:52
+ * @LastEditTime: 2022-01-04 21:34:19
  * @FilePath: \vue3-admin-ts\src\components\TagsView\index.vue
  * @Description:
 -->
@@ -23,7 +23,10 @@
       <i v-show="!isActive(tag)" class="el-icon-close" @click.prevent.stop="onCloseClick"></i>
     </router-link> -->
     <el-tabs type="border-card" v-model="activepath">
-      <el-tab-pane v-for="(tag, index) in settingStore.tagsViewList" :key="tag.fullPath">
+      <el-tab-pane
+        v-for="(tag, index) in settingStore.tagsViewList"
+        :key="tag.fullPath + tag.title"
+      >
         <template #label>
           <router-link
             :key="tag.fullPath"

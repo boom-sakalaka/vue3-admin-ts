@@ -2,7 +2,7 @@
  * @Author: GZH
  * @Date: 2022-01-01 22:22:16
  * @LastEditors: GZH
- * @LastEditTime: 2022-01-04 10:48:46
+ * @LastEditTime: 2022-01-04 21:57:44
  * @FilePath: \vue3-admin-ts\src\layout\components\Navbar.vue
  * @Description:
 -->
@@ -13,8 +13,9 @@
     <!-- 面包屑导航 -->
     <breadcrumb class="breadcrumb-container" id="guide-breadcrumb" />
     <div class="right-menu">
+      <guide class="right-menu-item hover-effect"></guide>
       <header-search class="right-menu-item hover-effect" id="guide-search"></header-search>
-      <screen-full class="right-menu-item hover-effect"></screen-full>
+      <screen-full class="right-menu-item hover-effect" id="guide-full"></screen-full>
       <lang-select class="right-menu-item hover-effect"></lang-select>
       <theme-select class="right-menu-item hover-effect"></theme-select>
       <!-- 头像 -->
@@ -49,6 +50,7 @@ import LangSelect from '@/components/langSelect/index.vue'
 import ThemeSelect from '@/components/ThemeSelect/index.vue'
 import ScreenFull from '@/components/Screenfull/index.vue'
 import HeaderSearch from '@/components/HeaderSearch/index.vue'
+import Guide from '@/components/Guide/index.vue'
 
 const userStore = useUserStore()
 // 退出登录

@@ -19,7 +19,8 @@
     "vue-router": "^4.0.0-0",
     "vuex": "^4.0.0-0",
     "screenfull": "5.1.0",
-    "fuse.js": "6.4.6"
+    "fuse.js": "6.4.6",
+    "driver.js": "0.9.8"
   },
   "devDependencies": {
     "@types/md5": "^2.3.1",

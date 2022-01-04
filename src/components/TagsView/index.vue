@@ -2,13 +2,13 @@
  * @Author: GZH
  * @Date: 2022-01-04 13:46:41
  * @LastEditors: GZH
- * @LastEditTime: 2022-01-04 15:08:09
+ * @LastEditTime: 2022-01-04 16:14:52
  * @FilePath: \vue3-admin-ts\src\components\TagsView\index.vue
  * @Description:
 -->
 <template>
   <div class="tags-view-container">
-    <router-link
+    <!-- <router-link
       v-for="(tag, index) in settingStore.tagsViewList"
       :key="tag.fullPath"
       class="tags-view-item"
@@ -21,14 +21,32 @@
       @contextmenu.prevent="openMenu($event, index)"
       >{{ tag.title }}
       <i v-show="!isActive(tag)" class="el-icon-close" @click.prevent.stop="onCloseClick"></i>
-    </router-link>
-
+    </router-link> -->
+    <el-tabs type="border-card" v-model="activepath">
+      <el-tab-pane v-for="(tag, index) in settingStore.tagsViewList" :key="tag.fullPath">
+        <template #label>
+          <router-link
+            :key="tag.fullPath"
+            class="tags-view-item"
+            :class="isActive(tag) ? 'active' : ''"
+            :to="{ path: tag.fullPath }"
+            :style="{
+              backgroundColor: isActive(tag) ? settingStore.cssVar.menuBg : '',
+              borderColor: isActive(tag) ? settingStore.cssVar.menuBg : ''
+            }"
+            @contextmenu.prevent="openMenu($event, index)"
+            >{{ tag.title }}
+            <i v-show="!isActive(tag)" class="el-icon-close" @click.prevent.stop="onCloseClick"></i>
+          </router-link>
+        </template>
+      </el-tab-pane>
+    </el-tabs>
     <context-menu v-show="visible" :style="menuStyle" :index="selectIndex"></context-menu>
   </div>
 </template>
 
 <script setup lang="ts">
-import { onUnmounted, ref, watch } from 'vue'
+import { computed, onUnmounted, ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import { useSettingStore, ITagsView } from '@/piniaStore/setting'
 import ContextMenu from './ContextMenu.vue'
@@ -50,6 +68,8 @@ const route = useRoute()
 const isActive = (tag: ITagsView) => {
   return tag.path === route.path
 }
+
+const activepath = computed(() => route.path)
 
 // 鼠标右键
 const visible = ref<boolean>(false)
@@ -147,6 +167,12 @@ onUnmounted(() => {
         color: #fff;
       }
     }
+  }
+  :deep(.el-tabs__content) {
+    padding: 0;
+  }
+  :deep(.el-tabs__item) {
+    padding: 0 !important;
   }
 }
 </style>

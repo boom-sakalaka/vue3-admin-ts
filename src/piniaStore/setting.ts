@@ -2,7 +2,7 @@
  * @Author: GZH
  * @Date: 2022-01-02 11:48:40
  * @LastEditors: GZH
- * @LastEditTime: 2022-01-04 14:34:27
+ * @LastEditTime: 2022-01-04 16:11:38
  * @FilePath: \vue3-admin-ts\src\piniaStore\setting.ts
  * @Description: 全局配置
  */
@@ -92,6 +92,7 @@ export const useSettingStore = defineStore({
     /* 设置tags */
     setTagsViewList(newTagsViews: ITagsView[]) {
       this.tagsViewList = newTagsViews
+      setItem(TAGS_VIEW, this.tagsViewList)
     },
     addTagsViewList(tag: ITagsView) {
       const isFind = this.tagsViewList.find((item) => item.path === tag.path)

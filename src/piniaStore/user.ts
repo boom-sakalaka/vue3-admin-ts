@@ -2,7 +2,7 @@
  * @Author: GZH
  * @Date: 2022-01-01 17:40:51
  * @LastEditors: GZH
- * @LastEditTime: 2022-01-03 16:13:00
+ * @LastEditTime: 2022-01-04 16:11:04
  * @FilePath: \vue3-admin-ts\src\piniaStore\user.ts
  * @Description: 用户数据 全局共享
  */
@@ -14,6 +14,7 @@ import router from '@/router'
 import { setItem, getItem, removeItem } from '@/utils/storage'
 import { TOKEN, TIME_STAMP } from '@/constant'
 import { setTimeStamp } from '@/utils/auth'
+import { useSettingStore } from '@/piniaStore/setting'
 
 interface IUserStore {
   token: string
@@ -72,6 +73,9 @@ export const useUserStore = defineStore({
       // removeAllItem()
       removeItem(TOKEN)
       removeItem(TIME_STAMP)
+      // 清空tags
+      const settingStore = useSettingStore()
+      settingStore.setTagsViewList([])
 
       // 清空主题色
       // TODO 权限相关

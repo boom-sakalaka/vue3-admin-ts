@@ -2,7 +2,7 @@
  * @Author: GZH
  * @Date: 2021-12-29 13:53:43
  * @LastEditors: GZH
- * @LastEditTime: 2022-01-03 16:32:54
+ * @LastEditTime: 2022-01-27 20:47:55
  * @FilePath: \vue3-admin-ts\src\utils\request2.ts
  * @Description: 封装登录请求 https://github.dev/buqiyuan/vue3-antd-admin
  */
@@ -38,6 +38,7 @@ const service = axios.create({
 
 service.interceptors.request.use(
   (config) => {
+    config.headers!.icode = '9E423423E0376991'
     const userStore = useUserStore()
     const token = userStore.token
     if (token && config.headers) {

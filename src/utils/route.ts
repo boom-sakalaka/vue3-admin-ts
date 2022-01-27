@@ -2,19 +2,10 @@
  * @Author: GZH
  * @Date: 2022-01-02 11:02:19
  * @LastEditors: GZH
- * @LastEditTime: 2022-01-02 11:30:13
+ * @LastEditTime: 2022-01-27 21:05:49
  * @FilePath: \vue3-admin-ts\src\utils\route.ts
  * @Description:
  */
-/*
- * @Author: GZH
- * @Date: 2021-12-08 22:04:40
- * @LastEditors: GZH
- * @LastEditTime: 2021-12-08 23:07:53
- * @FilePath: \vue3-admin\src\utils\route.js
- * @Description:
- */
-
 import path from 'path'
 import { RouteRecordRaw } from 'vue-router'
 

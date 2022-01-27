@@ -2,8 +2,8 @@
  * @Author: GZH
  * @Date: 2021-12-29 13:53:43
  * @LastEditors: GZH
- * @LastEditTime: 2021-12-29 14:19:20
- * @FilePath: \qrcode-proj\src\utils\request.ts
+ * @LastEditTime: 2022-01-27 20:44:14
+ * @FilePath: \vue3-admin-ts\src\utils\request.ts
  * @Description:封装登录请求
  */
 import axios, { AxiosError, AxiosRequestConfig, AxiosResponse } from 'axios'
@@ -19,6 +19,7 @@ const service = axios.create({
 // 请求拦截器
 service.interceptors.request.use(
   (config: AxiosRequestConfig) => {
+    config.headers!.icode = '9E423423E0376991'
     // 注入token
     if (store.getters.token) {
       // 时间过期

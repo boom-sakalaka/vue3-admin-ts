@@ -2,7 +2,7 @@
  * @Author: GZH
  * @Date: 2021-12-29 11:37:17
  * @LastEditors: GZH
- * @LastEditTime: 2022-01-28 17:04:09
+ * @LastEditTime: 2022-01-28 17:07:09
  * @FilePath: \vue3-admin-ts\src\views\Login\index.vue
  * @Description: 登录页
 -->
@@ -57,7 +57,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { useUserStore } from '@/piniaStore/user'
-import { validatePassword, validateUsername, callBcak } from './rules'
+import { validatePassword, validateUsername } from './rules'
 import type { ElForm } from 'element-plus'
 import LangSelect from '@/components/langSelect/index.vue'
 import type { IloginRules, IloginForm } from './loginType'

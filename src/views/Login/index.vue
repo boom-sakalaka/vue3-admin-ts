@@ -2,7 +2,7 @@
  * @Author: GZH
  * @Date: 2021-12-29 11:37:17
  * @LastEditors: GZH
- * @LastEditTime: 2022-01-03 14:01:45
+ * @LastEditTime: 2022-01-28 17:04:09
  * @FilePath: \vue3-admin-ts\src\views\Login\index.vue
  * @Description: 登录页
 -->
@@ -60,29 +60,7 @@ import { useUserStore } from '@/piniaStore/user'
 import { validatePassword, validateUsername, callBcak } from './rules'
 import type { ElForm } from 'element-plus'
 import LangSelect from '@/components/langSelect/index.vue'
-
-// 类型定义
-interface IloginForm {
-  username: string
-  password: string
-}
-
-interface IValidator {
-  (rule: object, value: string, callback: callBcak): void
-}
-
-interface IloginRules {
-  username: {
-    required: boolean
-    trigger: string
-    validator: IValidator
-  }[]
-  password: {
-    required: boolean
-    trigger: string
-    validator: IValidator
-  }[]
-}
+import type { IloginRules, IloginForm } from './loginType'
 
 // 验证规则
 const loginRules = ref<IloginRules>({
